@@ -1,2 +1,2 @@
 # Go_NA
-A simple list of tools to help some dna sequences written in go
+A simple library to help some dna sequencing analysis. Written in go.
