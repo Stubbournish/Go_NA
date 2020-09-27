@@ -55,17 +55,17 @@ func (s Strand) patternCount(pattern string) int {
 
 func (s Strand) frequentWords(k int) []string {
 	frequentPatterns := make([]string, 0)
-	count := make([]int, 0)
+	DnaFrequencyDict := make(DnaFrequencyDict, 0)
 	maxCount := 0
+
 	for i := 0; i <= len(s)-k; i++ {
 		pattern := string(s)[i : k+i]
-		patternCount := s.patternCount(pattern)
-		count = append(count, patternCount)
-		if patternCount > maxCount {
-			maxCount = patternCount
+		DnaFrequencyDict[pattern]++
+		if DnaFrequencyDict[pattern] > maxCount {
+			maxCount = DnaFrequencyDict[pattern]
 			frequentPatterns = nil
 			frequentPatterns = append(frequentPatterns, pattern)
-		} else if patternCount == maxCount && !stringInSlice(pattern, frequentPatterns) {
+		} else if DnaFrequencyDict[pattern] == maxCount && !stringInSlice(pattern, frequentPatterns) {
 			frequentPatterns = append(frequentPatterns, pattern)
 		}
 
