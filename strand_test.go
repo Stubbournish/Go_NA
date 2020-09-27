@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"strings"
 	"testing"
 )
 
@@ -48,6 +49,21 @@ func TestSubStrand3(t *testing.T) {
 	s := Strand("CTA")
 	if s.subStrand(1, len(s)) != "TA" {
 		t.Errorf("subStrand is NOK. Expected %v, but returned %v", "TA", s.subStrand(0, len(s)-1))
+	}
+
+}
+
+func TestStrandPatternCount(t *testing.T) {
+	s := Strand("aasdasd").patternCount("as")
+	if s != 2 {
+		t.Errorf("Strand method 'PatternCount is NOK.' Expected %v, but returned %v", 2, s)
+	}
+}
+
+func TestStrandFrequentWords(t *testing.T) {
+	s := strings.Join(Strand("CGCCTAAATAGCCTCGCGGAGCCTTATGTCATACTCGTCCT").frequentWords(3), "")
+	if s != "CCT" {
+		t.Errorf("FrequentWords is NOK. Expected %v, but returned %v", s, "CCT")
 	}
 
 }

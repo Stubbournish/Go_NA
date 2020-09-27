@@ -41,3 +41,34 @@ func (s Strand) reverseComplement() string {
 func (s Strand) subStrand(start int, finish int) Strand {
 	return s[start:finish]
 }
+
+func (s Strand) patternCount(pattern string) int {
+	count := 0
+	for i := 0; i <= len(s)-len(pattern); i++ {
+		section := s[i : len(pattern)+i]
+		if pattern == string(section) {
+			count++
+		}
+	}
+	return count
+}
+
+func (s Strand) frequentWords(k int) []string {
+	frequentPatterns := make([]string, 0)
+	count := make([]int, 0)
+	maxCount := 0
+	for i := 0; i <= len(s)-k; i++ {
+		pattern := string(s)[i : k+i]
+		patternCount := s.patternCount(pattern)
+		count = append(count, patternCount)
+		if patternCount > maxCount {
+			maxCount = patternCount
+			frequentPatterns = nil
+			frequentPatterns = append(frequentPatterns, pattern)
+		} else if patternCount == maxCount && !stringInSlice(pattern, frequentPatterns) {
+			frequentPatterns = append(frequentPatterns, pattern)
+		}
+
+	}
+	return frequentPatterns
+}
