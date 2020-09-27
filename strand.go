@@ -57,7 +57,6 @@ func (s Strand) frequentWords(k int) []string {
 	frequentPatterns := make([]string, 0)
 	DnaFrequencyDict := make(DnaFrequencyDict, 0)
 	maxCount := 0
-
 	for i := 0; i <= len(s)-k; i++ {
 		pattern := string(s)[i : k+i]
 		DnaFrequencyDict[pattern]++
@@ -71,4 +70,17 @@ func (s Strand) frequentWords(k int) []string {
 
 	}
 	return frequentPatterns
+}
+
+// TODO - complete function patternIndexes
+func (s Strand) patternIndexes(p string) []int {
+	Indexes := make([]int, 0)
+	for i := 0; i <= len(s)-len(p); i++ {
+		pattern := string(s)[i : i+len(p)]
+		if p == pattern {
+			Indexes = append(Indexes, i)
+		}
+
+	}
+	return Indexes
 }

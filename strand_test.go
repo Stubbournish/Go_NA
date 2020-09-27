@@ -75,3 +75,10 @@ func TestStrandFrequentWords2(t *testing.T) {
 		t.Errorf("FrequentWords is NOK. Expected %v, but returned %v", o, s)
 	}
 }
+
+// TODO - Complete Test function PatternIndexes
+func TestStrandPatternIndexes(t *testing.T) {
+	//if  {
+	//		t.Errorf("")
+	//	}
+}
